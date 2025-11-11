@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/utils/dio_helper.dart';
 import 'core/utils/shared_prefs_helper.dart';
+import 'core/utils/theme_cubit.dart';
 import 'app.dart';
 
 void main() async {
@@ -11,5 +12,10 @@ void main() async {
 
   await SharedPrefsHelper.init();
 
-  runApp(const HealthyBiteApp());
+  runApp(
+    BlocProvider(
+      create: (context) => ThemeCubit(),
+      child: const HealthyBiteApp(),
+    ),
+  );
 }
